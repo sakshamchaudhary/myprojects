@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!--<base href="http://localhost/minihack/">-->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="W3css/w3.css">
+        <script src="scripts/jquery-3.2.1.min.js"></script>
+        <script src="scripts/angular.js"></script>
+        
+        <!--<script type="text/javascript" src="app.js"></script>
+        <script type="text/javascript" src="xxxxxxxxxxxx.js" ></script>-->
+        <style>
+            .btn {
+                border: none;
+                color: white;
+                padding: 24px 100px; 
+                cursor: pointer;
+                }
+            .warning {background-color: #ff9800;}
+            .warning:hover {background: #ffa844;}
+            .closebtn {padding-left: 20px; padding-right: 20px; cursor: pointer}
+            .frm{width:90%}
+            body, html {
+                height: 100%;
+                margin: 0;
+            }
+            .bg {
+                background-image: url("img/students.jpeg");
+                height: 100%; 
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            .warn{
+                color:red; 
+                font-size: 60%;
+            }
+            .head{
+                color:white;
+                font-size: 140%;
+            }
+        </style>
+    </head>
+    
+    <body ng-app="MyApp" ng-controller="app">
+        <div class="w3-bar w3-orange" style="background: #348E8A">
+            <img src="img/mitlogo.png" style="height:60px;"/> <span class="head">Mini Hackathon</span>
+        </div>
+        <div class="bg">
+            <div onclick="document.getElementById('id01').style.display='block'" class="btn warning w3-display-middle w3-card-16 w3-round">Register
+            </div>
+        </div>
+        
+        
+        <div class="w3-container">
+            <div id="id01" class="w3-modal w3-display-middle">
+                <div class="w3-modal-content w3-card-4 w3-animate-zoom w3-round">
+                    <div class="w3-center"><br>
+                        <span onclick="document.getElementById('id01').style.display='none'" class="closebtn w3-button w3-xlarge w3-hover-red w3-display-topright" title="Close Modal">&times;</span>
+                    </div>
+                    <form class="frm w3-container">
+                        <div class="w3-section w3-container">
+                            
+                            <input class="w3-input" ng-model="grpnme" type="text" placeholder="Group Name" name="gname" onkeypress="valgrp(event)"/>
+                            <span class="warn" id='grpwarn' style="display:none;">Invalid character!</span>
+                            
+                            <select class="w3-select w3-margin-bottom" name="option" ng-model="memno" ng-change="aa()" required>
+                                <option value="" disabled selected>Group Members</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                            </select>
+                            <p class="w3-center" ng-repeat="member in members track by $index">Member {{member.mem}}
+                              
+                                
+                                
+                            <input class="w3-input" ng-model="nam[member.mem]" id='{{member.mem}}' type="text" placeholder="Name" name="name" onkeypress="valname(event,id)" required/>
+                            <span class="warn" id='nmewarn{{member.mem}}' style="display:none;">Invalid character!</span>
+                            
+                                
+                                
+                            <input class="w3-input" ng-model="mail[member.mem]" id='{{member.mem}}' type="email" placeholder="Email" name="mail" onkeypress="valmail(event,id)" required/>
+                            <span class="warn" id='mailwarn{{member.mem}}' style="display:none;">Invalid character!</span>   
+                                
+                                
+                            <select class="w3-select" name="branch" ng-model="bch[member.mem]" required>
+                                <option value="" disabled selected>Branch</option>
+                                <option value="CSE">CSE</option>
+                                <option value="EC">EC</option>
+                                <option value="EE">EE</option>
+                                <option value="CE">CE</option>
+                                <option value="ME">ME</option>
+                                <option value="CH">CH</option>
+                                <option value="EN">EN</option>
+                            </select>    
+                                
+                            <select class="w3-select" name="section" ng-model="year[member.mem]" required>
+                                <option value="" disabled selected>Year</option>
+                                <option value="1">1st</option>
+                                <option value="2">2nd</option>
+                                <option value="3">3rd</option>
+                                <option value="4">4th</option>
+                            </select>  
+                                
+                            </p>
+                            
+                            <button type="submit" class="w3-btn w3-center" style="background:#348E8A" ng-click="reg()" ng-show="btn">Register</button>
+                        </div>
+                    </form>
+                    <div class="w3-container w3-border-top w3-padding-16 w3-light-grey"></div>
+                </div>
+            </div>
+        </div>
+        
+        <script type="text/javascript">
+            function valgrp(e) {  
+                document.getElementById('grpwarn').style.display="none";
+                var str = e.key; 
+                var n = str.search(/[0-9a-zA-Z\s]/i);
+                if (n==-1) {
+                    e.returnValue=false;
+                    document.getElementById('grpwarn').removeAttribute("style");
+                }
+            };
+            function valname(e,n) {  
+                var id = "nmewarn"+n;
+                document.getElementById(id).style.display="none";
+                var str = e.key; 
+                var n = str.search(/[a-zA-Z\s]/i);
+                if (n==-1) {
+                    e.returnValue=false;
+                    document.getElementById(id).removeAttribute("style");
+                }
+            };
+            function valmail(e,n) {  
+                var id = "mailwarn"+n;
+                document.getElementById(id).style.display="none";
+                var str = e.key; 
+                var n = str.search(/[0-9a-zA-Z\s]/i);
+                //console.log(e.key);
+                if (n==-1 && e.key!="@" && e.key!="." && e.key!="_") {
+                    e.returnValue=false;
+                    document.getElementById(id).removeAttribute("style");
+                }
+            };
+            
+            
+            var appX = angular.module('MyApp', []);
+            appX.controller('app', function ($scope, $http) {
+                
+                var i;
+                $scope.grpnme='';
+                $scope.memno=0;
+                $scope.btn=false;
+                
+                $scope.aa = function() {
+                    if($scope.memno>1 && $scope.memno<7) $scope.btn=true;
+                    $scope.members = [];
+                    for(i=1;i<=$scope.memno;i++) {
+                        $scope.members.push({'mem':i});
+                    };
+                    
+                    console.log($scope.members);
+                };
+                
+                $scope.nam=[];
+                $scope.mail=[];
+                $scope.bch=[];
+                $scope.year=[];
+                $scope.reg = function() {if($scope.memno>1 && $scope.memno<7) {
+                    $scope.details=[];
+                    $scope.valid='right';
+                    
+                    for(i=0;i<$scope.memno && $scope.valid=='right';i++) {  
+                        var grlen = $scope.grpnme;
+                        if($scope.nam[i+1]==undefined || $scope.mail[i+1]==undefined || $scope.bch[i+1]==undefined || $scope.year[i+1]==undefined || $scope.grpnme=='' || $scope.memno==0 || $scope.members==undefined || grlen.length>20)
+                            {$scope.valid='wrong'; };
+                    };
+                    
+                    if ($scope.valid=='right') {
+                        for(i=0;i<$scope.memno;i++) {             
+                            $scope.details[i] = ({'name':$scope.nam[i+1],'email':$scope.mail[i+1],'branch':$scope.bch[i+1],'year':$scope.year[i+1]});
+                        };
+                        console.log($scope.details[1]);
+
+                        $http.post(
+                            "server_pages/server.php",
+                            {'grpname': $scope.grpnme, 'grpno': $scope.members, 'data': $scope.details}
+                        ).then(function successCallback(response) {
+                            //console.log(response.data);
+                            for(i=0;i<$scope.memno;i++) {  
+                                $scope.details[i]=undefined;
+                            };
+                            $scope.nam=[];
+                            $scope.mail=[];
+                            $scope.bch=[];
+                            $scope.year=[];
+                            $scope.grpnme='';
+                            $scope.memno='';
+                            $scope.valid='wrong';
+                            $scope.members=undefined;
+                            $scope.btn=false;
+                            alert(response.data);
+                            
+                            }, function errorCallback(response) {
+                            //this function is not working 
+                        });
+                    } else {
+                        alert("Form inputs INCOMPLETE/INVALID!!");
+                    };
+                };};
+            });
+        </script>
+    </body>
+</html>
