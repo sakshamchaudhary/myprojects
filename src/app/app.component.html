@@ -1,0 +1,21 @@
+<div style="text-align:center">
+  <ul>
+    <li>Logo</li>
+    <li class="link" routerLink="/" routerLinkActive="active">Home</li>
+    <li class="link" routerLink="/contact" routerLinkActive="active">Contact Us</li>
+    <li class="link"  routerLinkActive="active" style="float:right">   
+        <input [(ngModel)]="searchdata" type="text"  name="titlesearch" placeholder="Search by title"/>
+        <!--(keyup)="fn(event)"-->
+        <button (click)=fn2()>search</button>
+    </li>
+  </ul><br/><br/>
+</div>
+<div class="maindiv">
+  <router-outlet></router-outlet>
+</div>
+<div class="footer">
+  <h3>This is Footer</h3>
+</div>
+
+
+

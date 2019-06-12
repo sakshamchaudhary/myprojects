@@ -1,0 +1,9 @@
+<div style="margin:20px">
+    <ng-container *ngIf="post">
+          <h2>{{post.data[0].post_title}}</h2>
+          <span style="float:right;">published on:- {{post.data[0].post_date}}</span><br/>
+          <img [src]='"http://localhost/NGdecotechcraftsAPIs/admin/uploads/"+post.data[0].post_image'/><br/>
+          {{post.data[0].post_content}}<br/>
+          <br/>
+    </ng-container>
+  </div>
