@@ -1,0 +1,24 @@
+.categories{
+    width: 30%;
+    min-height: 500px;
+    background-color: blue;
+    float: left;
+    position: relative;
+    padding: 10px;
+}
+.homecontent{
+    width: 65%;
+    min-height: 500px;
+    background-color: bisque;
+    margin-left: 31%;
+    padding: 10px;
+}
+img{
+    height:200px;
+}
+.search-results {
+    height: 100px;
+    background: #d5e5ed;
+    overflow: scroll;
+    /* overflow-y: scroll; */
+}
