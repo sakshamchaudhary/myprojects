@@ -1,0 +1,63 @@
+<mat-toolbar color="accent">Register For MiniHackathon</mat-toolbar><br>
+
+<mat-card>
+
+  <form class="example-container" #form="ngForm" (ngSubmit)="submitForm(form)">
+    <mat-form-field  color="accent">
+      <input matInput placeholder="Group Name" [(ngModel)]="groupName" #grpName="ngModel" name="gropName" required pattern="[a-zA-Z]+">
+      <mat-error *ngIf="grpName.errors?.required">Group Name is <strong>required</strong></mat-error>
+      <mat-error *ngIf="grpName.errors?.pattern">Group Name is <strong>invalid</strong></mat-error>
+    </mat-form-field>
+
+    <mat-form-field  color="accent">
+      <mat-select placeholder="Number of Members" ngModel name="noOfMembers" (change)="generateForm(form)" required>
+        <mat-option value="2">2</mat-option>
+        <mat-option value="3">3</mat-option>
+        <mat-option value="4">4</mat-option>
+        <mat-option value="5">5</mat-option>
+        <mat-option value="6">6</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <div class="example-container" *ngFor="let mem of members; let i=index"><br>
+      <span class="mat-h3">Member{{mem.member}}</span>
+      <mat-form-field  color="accent">
+        <input matInput placeholder="Name" [(ngModel)]="names[i]" name="name{{mem.member}}" #memberName="ngModel" required pattern="[a-zA-Z]+">
+        <mat-error *ngIf="memberName.errors?.required">Name is <strong>required</strong></mat-error>
+        <mat-error *ngIf="memberName.errors?.pattern">Name is <strong>invalid</strong></mat-error>
+      </mat-form-field>
+
+      <mat-form-field  color="accent">
+        <input matInput placeholder="Email" [(ngModel)]="emails[i]" name="email{{mem.member}}" required>
+        <mat-error>Email Name is <strong>required</strong></mat-error>
+      </mat-form-field>
+
+      <mat-form-field  color="accent">
+        <mat-select placeholder="Branch" [(ngModel)]="branches[i]" name="branch{{mem.member}}" required>
+          <mat-option value="CSE">CSE</mat-option>
+          <mat-option value="EC">EC</mat-option>
+          <mat-option value="EE">EE</mat-option>
+          <mat-option value="CE">CE</mat-option>
+          <mat-option value="ME">ME</mat-option>
+          <mat-option value="CH">CH</mat-option>
+          <mat-option value="EN">EN</mat-option>
+        </mat-select>
+        <mat-error>This field is <strong>required</strong></mat-error>
+      </mat-form-field>
+      <mat-form-field  color="accent">
+        <mat-select placeholder="Year" [(ngModel)]="years[i]" name="year{{mem.member}}" required>
+          <mat-option value="1">1st</mat-option>
+          <mat-option value="2">2nd</mat-option>
+          <mat-option value="3">3rd</mat-option>
+          <mat-option value="4">4th</mat-option>
+        </mat-select>
+        <mat-error>This field is <strong>required</strong></mat-error>
+       </mat-form-field>
+    </div>  
+
+    <button type="submit" mat-raised-button color="accent" [disabled]="form.invalid">Submit</button>
+
+  </form> 
+   
+</mat-card>
+{{members | json}}

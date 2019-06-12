@@ -1,0 +1,10 @@
+table{
+    border: 2 px solid black;
+}
+
+.search-results {
+    height: 100px;
+    background: #d5e5ed;
+
+    overflow-y: scroll;
+}

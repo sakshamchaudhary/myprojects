@@ -1,0 +1,14 @@
+<div class="text-center">
+  <h1>Image Uploader</h1>
+  <button class="btn btn-primary" (click)="uploadInput.click()">Browse File</button>
+
+  <img *ngIf="imgAvailable" [src]="imgAvailable" width="100px" height="100px"/>
+  <button *ngIf="imgAvailable" class="btn btn-primary" (click)="uploadFile()">Upload</button>
+  
+  <input id='notshow' type="file" (change)="showImage($event)" #uploadInput>
+</div>
+
+<div>
+  <h1>Uploaded Images</h1>
+  <img src="http://localhost/imgrecieverpage/imgs/abcg.png" height="300px"/>
+</div>

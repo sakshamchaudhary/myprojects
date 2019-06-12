@@ -1,0 +1,95 @@
+<!--The content below is only a placeholder and can be replaced.
+<app-header></app-header>
+<app-fileuploader [gallery]="gal"></app-fileuploader>
+<app-gallery #gal></app-gallery>-->
+
+<!--
+<app-minhack></app-minhack>
+<app-employee></app-employee>-->
+
+<ul>
+  <li routerLink="home" routerLinkActive="active">
+    Home
+  </li>
+  <li routerLink="minihack" routerLinkActive="active">
+    Minihack
+  </li>
+  <li routerLink="employee" routerLinkActive="active">
+    Employee
+  </li>
+  <li routerLink="userdata" routerLinkActive="active">
+    User Data
+    </li>
+</ul><br/><br/>
+<router-outlet></router-outlet>
+
+<!--
+<h3>Reactive form</h3>
+<div *ngIf="!name; else forminfo">
+  <form [formGroup]="rForm" (ngSubmit)="addPost(rForm.value)">
+      <div class="form-container">
+          <div class="row columns">
+
+            <h1>My Reactive Form</h1>
+
+            <label>Name
+              <input type="text" formControlName="name">
+            </label>
+            <div class="alert" *ngIf="!rForm.controls['name'].valid && rForm.controls['name'].touched">
+              This is required
+            </div>
+
+            <label>Description
+                <textarea type="text" formControlName="description"></textarea>
+            </label>
+            <div class="alert" *ngIf="!rForm.controls['description'].valid && rForm.controls['description'].touched">
+                You must specify a desc that is b/w aaaaa
+              </div>
+
+            <label for="validate">Minimum of 3 characters</label>
+            <mat-checkbox name="validate" formControlName="validate" value="1">On</mat-checkbox>
+            <input type="submit" mat-button value="Submit Form" [disabled]="!rForm.valid"><br>
+
+            <mat-input-container>
+              <input formControlName="name" name="abc" type="text" matInput placeholder="Enter name">
+              <mat-hint>Range of name.</mat-hint>
+              <mat-error>This field is required</mat-error>
+            </mat-input-container>
+          </div>
+        </div>
+  </form>
+</div>
+<ng-template #forminfo>
+  <div class="form-container">
+    <div class="row columns">
+      <h1>{{ name }}</h1>
+      <p>{{ description }}</p>
+    </div>
+  </div>
+</ng-template>
+
+
+<mat-toolbar color="primary">
+  <span>MyCompany</span>
+
+  <span class="example-spacer"></span>
+  <button mat-button [matMenuTriggerFor]="menu"><mat-icon>menu</mat-icon>Menu</button>
+</mat-toolbar>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item> Settings </button>
+    <button mat-menu-item> Help </button>
+</mat-menu>
+
+<mat-card *ngFor="let data of (myData ? myData.slice(0,10): []); let i = index">
+  <img mat-card-image src="{{ data.url }}">
+  <mat-card-header>
+    <mat-card-title>{{ data.title }}</mat-card-title>
+  </mat-card-header>
+  
+  <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>LIKE</button>
+  </mat-card-actions>
+</mat-card>
+-->

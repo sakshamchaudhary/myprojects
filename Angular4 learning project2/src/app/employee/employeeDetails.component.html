@@ -1,0 +1,30 @@
+<table>
+        <thead>
+            <tr>
+                <th colspan="2">Employee Details</th>
+            </tr>   
+        </thead>
+        <tbody>
+            <ng-container *ngIf='employee'>
+                <tr>
+                    <td>Code</td>
+                    <td>{{employee.code}}</td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>{{employee.name}}</td>
+                </tr>
+                <tr>
+                        <td>Gender</td>
+                        <td>{{employee.gender}}</td>
+                </tr>
+                <tr>
+                        <td>Salary</td>
+                        <td>{{employee.salary}}</td>
+                </tr>
+            </ng-container>
+            <tr *ngIf="!employee">
+                    <td colspan="2">{{statusMessage}}</td>
+            </tr>
+        </tbody>
+    </table>

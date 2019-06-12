@@ -1,0 +1,24 @@
+<div>Filter by First Name <input type="text" [(ngModel)]="firstName"></div>
+<table>
+  <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Mobile No</th>
+      <th>Post Code</th>
+      <th>Email</th>
+      <th>Connect as</th>
+  </tr>
+  <tr>
+    <div *ngIf="userdata" >
+      <tr *ngFor="let user of userdata | UserPipe: firstName">
+        <td>{{user.firstname}}</td>
+        <td>{{user.lastname}}</td>
+        <td>{{user.mobile_no}}</td>
+        <td>{{user.post_code}}</td>
+       <td>{{user.email}}</td>
+        <td>{{user.connect_as}}</td>
+  </tr>
+  </div>
+</tbody>
+</table>
+<button *ngIf="userdata" (click)="abc()">click</button>
