@@ -1,0 +1,20 @@
+ 
+           body{background-image: url("handy.jpg");
+           background-repeat: no-repeat;
+           background-size: cover;
+		   font-family:arial;}
+           #goi{
+			   background-color: #fafafa;
+		   box-shadow:0px 0px 2px grey;
+		   width:800px;
+		   padding:20px 40px;
+		   }
+     
+	  #whiteBack{
+			   background-color: #fff;
+		   box-shadow:0px 0px 2px grey;
+		   width:90%;
+		   padding:20px 40px;
+		   }
+     
+   
